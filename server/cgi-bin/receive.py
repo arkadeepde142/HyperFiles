@@ -11,7 +11,7 @@ try:
     fileitem = form['filename']
     if fileitem.filename:
         fn = os.path.basename(fileitem.filename)
-        open("/recieved/" + fn, 'wb').write(fileitem.file.read())
+        open("recieved/" + fn, 'wb+').write(fileitem.file.read())
         message = 'The file name "' + fn + '" is transferred.'
 
     data = {"message" : message}

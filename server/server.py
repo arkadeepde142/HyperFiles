@@ -1,15 +1,15 @@
 import http.server
 import socketserver
+import os
 
-PORT = 80
+PORT = 8000
 
 Handler = http.server.CGIHTTPRequestHandler
 
 
 class ModifiedCGI(Handler):
-    def __init__(self):
-        super()
-        self.allowed = ("/", "/index.html")
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=os.path.dirname(os.path.abspath(__file__)), **kwargs)
         
 
     def do_GET(self):

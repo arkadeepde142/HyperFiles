@@ -10,11 +10,16 @@ try:
     print("Content-type: application/json\r\n\r\n")
     fileitem = form['filename']
     if fileitem.filename:
+    
         fn = os.path.basename(fileitem.filename)
-        open("recieved/" + fn, 'wb+').write(fileitem.file.read())
+        basepath = os.path.dirname(__file__)
+        filepath = os.path.abspath(os.path.join(basepath, "..", "..", fn))
+        open(filepath, 'xb').write(fileitem.file.read())
         message = 'The file name "' + fn + '" is transferred.'
 
-    data = {"message" : message}
+    data = {"message" : message, 
+    "path": filepath}
+
     jsonout = json.dumps(data)
     print(jsonout)
 

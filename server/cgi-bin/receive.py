@@ -13,7 +13,7 @@ try:
     
         fn = os.path.basename(fileitem.filename)
         basepath = os.path.dirname(__file__)
-        filepath = os.path.abspath(os.path.join(basepath, "..", "..", fn))
+        filepath = os.path.abspath(os.path.join(basepath, "..", "received", fn))
         open(filepath, 'xb').write(fileitem.file.read())
         message = 'The file name "' + fn + '" is transferred.'
 
